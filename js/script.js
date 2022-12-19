@@ -25,6 +25,7 @@ const rows=10;
 const cols=10;
 const totalCells= rows * cols;
 let cellClicked=0
+let bomber=false
 // FUNZIONI------------------
 const createCell =(content) => {
     const cell = document.createElement("div");
@@ -40,7 +41,7 @@ const createCell =(content) => {
 buttonElement.addEventListener("click", function(){
 
     gridElement.innerHTML=``;
-   
+    scoreElement.innerHTML+=``;
     
     let bomb=0;
     let bombNumber = [];
@@ -52,41 +53,42 @@ buttonElement.addEventListener("click", function(){
           bombNumber.push(randomNumber)
           bomb++
         }
-        // console.log(bombNumber)
+        console.log(bombNumber)
       }
     
     for(let i=1; i<=totalCells;i++){
         titleElement.classList.add("d-none");
       const cell=  createCell(i) ;
-      
-
-   
+    
     //click celle 
-    
-    
- 
     cellSelected= [];
     cell.addEventListener("click",function() {
-      
-        if(bombNumber.includes(i)){
-          cell.classList.add("bomb");
-          alert("hai perso")
-          bomber=true;
-        }
-        
-        if(!cellSelected.includes(i) ){
-          cell.classList.toggle("checked");
-          cellClicked++;
-          cellSelected.push(i)
-          // console.log(cellSelected)
-          bomber=false;
-        }
-        
-        scoreElement.innerHTML=`<span class="score" id="score">SCORE : ${cellClicked} </span>`
 
+      scoreElement.innerHTML=`<span class="score" id="score">SCORE : ${cellClicked+1} </span>`
+
+        if(bombNumber.includes(i)){
+          
+          cell.classList.add("bomb");
+          alert("BOOOOOOOOOM!!!"); 
+          console.log(scoreElement);
+          scoreElement.innerHTML=`<span class="score text-danger h1 " id="score">BOOOOM! YOU LOSE! </span>`
+          
+          
+        }
+
+          else if(!cellSelected.includes(i) ){
+            cell.classList.toggle("checked");
+            cellClicked++;
+            cellSelected.push(i)
+            // console.log(cellSelected)
+        }
+         
+      
         if(cellClicked === (totalCells - 16)){
 
           scoreElement.innerHTML=`<span class="score text-success" id="score">SCORE : 84 YOU WIN!!! </span>`
+      
+          
         }
       })
      
