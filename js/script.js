@@ -43,14 +43,15 @@ buttonElement.addEventListener("click", function(){
     
     let bomb=0
     let bombNumber = []
+    
     while(bomb<16){
-      const randomNumber=Math.floor(Math.random()*16)+1;
+      const randomNumber=Math.floor(Math.random()*totalCells)+1;
       if(!bombNumber.includes (randomNumber) ){
   
           bombNumber.push(randomNumber)
           bomb++
+          console.log(bombNumber)
       }
-      console.log(bombNumber)
     }
     
     for(let i=1; i<=totalCells;i++){
@@ -63,15 +64,12 @@ buttonElement.addEventListener("click", function(){
       cellSelected= [];
       cell.addEventListener("click",function() {
 
-        // if(cellSelected.includes (i)){
-        //   cell.classList.add("bomb")
-        //   console.log("bomb");
-        //   console.log(i);
+        if(cellSelected.includes (bombNumber)){
+          cell.classList.add("bomb")
+          console.log("bomb");
 
-         
-          
-        //   alert("hai perso");
-        // }
+          alert("hai perso");
+        }
         
          if(!cellSelected.includes (i) ){
           cell.classList.toggle("checked");
