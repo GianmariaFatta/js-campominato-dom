@@ -40,16 +40,11 @@ const createCell =(content) => {
 buttonElement.addEventListener("click", function(){
 
     gridElement.innerHTML=``;
-     bombNumber = [1];
     
-    for(let i=1; i<=totalCells;i++){
-        titleElement.classList.add("d-none");
-      const cell=  createCell(i) ;
-      
     let bomb=0
     let bombNumber = []
     while(bomb<16){
-      const randomNumber=Math.floor(Math.random()*totalCells)+1;
+      const randomNumber=Math.floor(Math.random()*16)+1;
       if(!bombNumber.includes (randomNumber) ){
   
           bombNumber.push(randomNumber)
@@ -57,21 +52,28 @@ buttonElement.addEventListener("click", function(){
       }
       console.log(bombNumber)
     }
+    
+    for(let i=1; i<=totalCells;i++){
+        titleElement.classList.add("d-none");
+      const cell=  createCell(i) ;
+      
 
 
     //click celle   
       cellSelected= [];
       cell.addEventListener("click",function() {
 
-        if(!cellSelected.includes (bombNumber)){
-          cell.classList.add("bomb")
-          console.log("bomb");
+        // if(cellSelected.includes (i)){
+        //   cell.classList.add("bomb")
+        //   console.log("bomb");
+        //   console.log(i);
+
          
           
-          alert("hai perso");
-        }
+        //   alert("hai perso");
+        // }
         
-        else if(!cellSelected.includes (i) ){
+         if(!cellSelected.includes (i) ){
           cell.classList.toggle("checked");
           
           cellClicked++;
@@ -79,6 +81,7 @@ buttonElement.addEventListener("click", function(){
 
           console.log(cellSelected)
           console.log(cellClicked)
+          console.log(i)
         }
           
           
