@@ -44,6 +44,18 @@ buttonElement.addEventListener("click", function(){
     for(let i=1; i<=totalCells;i++){
         titleElement.classList.add("d-none");
       const cell=  createCell(i) ;
+      
+    let bomb=0
+    let bombNumber = []
+    while(bomb<16){
+      const randomNumber=Math.floor(Math.random()*totalCells)+1;
+      if(!bombNumber.includes (randomNumber) ){
+  
+          bombNumber.push(randomNumber)
+          bomb++
+      }
+      console.log(bombNumber)
+    }
     //  
 
       cellSelected= [];
@@ -64,3 +76,4 @@ buttonElement.addEventListener("click", function(){
     }
     
     });
+    
