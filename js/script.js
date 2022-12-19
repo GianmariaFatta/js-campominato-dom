@@ -22,7 +22,8 @@ const titleElement=document.getElementById("title")
 
 const rows=10;
 const cols=10;
-const totalCells= rows * cols
+const totalCells= rows * cols;
+let cellClicked=0
 // FUNZIONI------------------
 const createCell =(content) => {
     const cell = document.createElement("div");
@@ -45,21 +46,21 @@ buttonElement.addEventListener("click", function(){
       const cell=  createCell(i) ;
     //  
 
-      
+      cellSelected= [];
       cell.addEventListener("click",function() {
+        if(!cellSelected.includes (i) ){
           cell.classList.toggle("checked");
-          console.log(i)
+          
+          cellClicked++;
+          cellSelected.push(i)
+
+          console.log(cellSelected)
+          console.log(cellClicked)
+        }
+          
           
         })
        
     }
     
     });
-
-
-    
-    
-    
-
-    
-    
