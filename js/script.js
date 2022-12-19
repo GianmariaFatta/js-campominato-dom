@@ -39,7 +39,8 @@ const createCell =(content) => {
 
 buttonElement.addEventListener("click", function(){
 
-    gridElement.innerHTML=``
+    gridElement.innerHTML=``;
+     bombNumber = [1];
     
     for(let i=1; i<=totalCells;i++){
         titleElement.classList.add("d-none");
@@ -56,11 +57,21 @@ buttonElement.addEventListener("click", function(){
       }
       console.log(bombNumber)
     }
-    //  
 
+
+    //click celle   
       cellSelected= [];
       cell.addEventListener("click",function() {
-        if(!cellSelected.includes (i) ){
+
+        if(!cellSelected.includes (bombNumber)){
+          cell.classList.add("bomb")
+          console.log("bomb");
+         
+          
+          alert("hai perso");
+        }
+        
+        else if(!cellSelected.includes (i) ){
           cell.classList.toggle("checked");
           
           cellClicked++;
