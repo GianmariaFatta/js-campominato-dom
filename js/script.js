@@ -41,18 +41,18 @@ buttonElement.addEventListener("click", function(){
 
     gridElement.innerHTML=``;
     
-    let bomb=0
-    let bombNumber = []
+    let bomb=0;
+    let bombNumber = [];
     
     while(bomb<16){
       const randomNumber=Math.floor(Math.random()*totalCells)+1;
-      if(!bombNumber.includes (randomNumber) ){
+      if(!bombNumber.includes(randomNumber) ){
   
           bombNumber.push(randomNumber)
           bomb++
-          console.log(bombNumber)
+        }
+        console.log(bombNumber)
       }
-    }
     
     for(let i=1; i<=totalCells;i++){
         titleElement.classList.add("d-none");
@@ -64,14 +64,14 @@ buttonElement.addEventListener("click", function(){
       cellSelected= [];
       cell.addEventListener("click",function() {
 
-        if(cellSelected.includes (bombNumber)){
+        if(bombNumber.includes(i)){
           cell.classList.add("bomb")
           console.log("bomb");
 
           alert("hai perso");
         }
         
-         if(!cellSelected.includes (i) ){
+         if(!cellSelected.includes(i) ){
           cell.classList.toggle("checked");
           
           cellClicked++;
