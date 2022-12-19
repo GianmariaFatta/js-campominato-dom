@@ -18,6 +18,7 @@ const buttonElement=document.getElementById("button")
 const gridElement=document.getElementById("grid")
 const cellElement=document.getElementsByClassName("cell")
 const titleElement=document.getElementById("title")
+const scoreElement=document.getElementById("score")
 
 
 const rows=10;
@@ -33,13 +34,13 @@ const createCell =(content) => {
     return cell;
 }
    
-    
 
 //generiamo azione al click del bottone
 
 buttonElement.addEventListener("click", function(){
 
     gridElement.innerHTML=``;
+   
     
     let bomb=0;
     let bombNumber = [];
@@ -51,7 +52,7 @@ buttonElement.addEventListener("click", function(){
           bombNumber.push(randomNumber)
           bomb++
         }
-        console.log(bombNumber)
+        // console.log(bombNumber)
       }
     
     for(let i=1; i<=totalCells;i++){
@@ -59,33 +60,41 @@ buttonElement.addEventListener("click", function(){
       const cell=  createCell(i) ;
       
 
-
-    //click celle   
-      cellSelected= [];
-      cell.addEventListener("click",function() {
-
+   
+    //click celle 
+    
+    
+ 
+    cellSelected= [];
+    cell.addEventListener("click",function() {
+      
         if(bombNumber.includes(i)){
-          cell.classList.add("bomb")
-          console.log("bomb");
-
-          alert("hai perso");
+          cell.classList.add("bomb");
+          alert("hai perso")
+          bomber=true;
         }
         
-         if(!cellSelected.includes(i) ){
+        if(!cellSelected.includes(i) ){
           cell.classList.toggle("checked");
-          
           cellClicked++;
           cellSelected.push(i)
-
-          console.log(cellSelected)
-          console.log(cellClicked)
-          console.log(i)
+          // console.log(cellSelected)
+          bomber=false;
         }
-          
-          
-        })
-       
+        
+        scoreElement.innerHTML=`<span class="score" id="score">SCORE : ${cellClicked} </span>`
+
+        if(cellClicked === (totalCells - 16)){
+
+          scoreElement.innerHTML=`<span class="score text-success" id="score">SCORE : 84 YOU WIN!!! </span>`
+        }
+      })
+     
+      
     }
-    
-    });
-    
+      
+  });
+
+  
+  
+  
